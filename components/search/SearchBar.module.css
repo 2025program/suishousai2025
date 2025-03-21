@@ -1,0 +1,61 @@
+/* components/Search/SearchBar.module.css */
+
+.searchBarContainer {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    /* 必要に応じて調整 */
+    margin: 0 auto;
+    /* 中央揃え */
+}
+
+.searchIcon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    width: 20px;
+    height: 20px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 10px 10px 10px 45px;
+    /* アイコン分の左パディング */
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 1em;
+}
+
+.searchInput:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+.clearButton {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clearIcon {
+    width: 20px;
+    height: 20px;
+    transition: color 0.3s;
+}
+
+.clearButton:hover .clearIcon {
+    color: #4a90e2;
+}

@@ -1,0 +1,57 @@
+/* components/TicketAnnouncementBox/TicketItem.module.css */
+
+.ticketItem {
+    background-color: #fff;
+    border-left: 5px solid #007c91;
+    /* チケット用カラー */
+    border-radius: 8px;
+    padding: 15px 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 10px;
+}
+
+.ticketItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.ticketIcon {
+    font-size: 1.5em;
+    color: #007c91;
+    flex-shrink: 0;
+}
+
+.ticketName {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+}
+
+.ticketText {
+    font-size: 0.95em;
+    color: #333;
+    margin: 0;
+}
+
+/* リンク部分 */
+.linkWrapper {
+    margin-top: 8px;
+}
+
+.detailLink {
+    font-size: 0.9em;
+    color: #007c91;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.detailLink:hover {
+    color: #005f68;
+}

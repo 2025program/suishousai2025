@@ -1,0 +1,66 @@
+/* components/Search/SearchResults.module.css */
+
+/* コンテナ全体 */
+.searchResultsContainer {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* 空メッセージ */
+.emptyMessage {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 1em;
+}
+
+/* グリッドコンテナ */
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* グリッドアイテム */
+.gridItem {
+    position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    outline: none;
+}
+
+.gridItem:focus,
+.gridItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+    .gridContainer {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .gridContainer {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .gridContainer {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .gridContainer {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+}

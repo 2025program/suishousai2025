@@ -1,0 +1,148 @@
+.outerContainer {
+    padding: 20px;
+}
+
+/* 検索ボックスを目立たせる */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.searchInput {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px 16px;
+    font-size: 1.2rem;
+    border: 2px solid #0070f3;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+    border-color: #005bb5;
+}
+
+.suggestionList {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.suggestionItem {
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.suggestionItem:hover {
+    background-color: #f0f0f0;
+}
+
+/* グリッドレイアウト：画面幅に応じて列数を変更 */
+.flatMapContainer {
+    display: grid;
+    gap: 20px;
+}
+
+@media (min-width: 600px) {
+    .flatMapContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .flatMapContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+.floorContainer {
+    padding: 10px;
+    background: #fff;
+}
+
+.floorTitle {
+    margin-bottom: 10px;
+}
+
+/* マップコンテナは元の比率（1290:967）を維持 */
+.mapContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1290 / 967;
+    overflow: hidden;
+}
+
+.mapImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ピン関連のスタイル（再利用または調整） */
+.pinWrapper {
+    position: absolute;
+}
+
+.pinContent {
+    position: relative;
+}
+
+.iconWrapper {
+    position: absolute;
+}
+
+.mapex {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    row-gap: 10px;
+    /* コンテンツ間の余白 */
+}
+
+.exfloor {
+    display: flex;
+    width: 165px;
+    justify-content: center;
+}
+
+.exname {
+    padding-right: 10px;
+    width: 110px;
+}
+
+.excolor1 {
+    width: 40px;
+    background-color: rgba(94, 255, 56, 1);
+}
+
+.excolor2 {
+    width: 40px;
+    background-color: rgba(0, 75, 255, 1);
+}
+
+.excolor3 {
+    width: 40px;
+    background-color: rgba(255, 75, 0, 1);
+}
+
+.excolor4 {
+    width: 40px;
+    background-color: rgba(255, 75, 255, 1);
+}

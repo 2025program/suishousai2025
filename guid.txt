@@ -1,0 +1,114 @@
+環境セットアップ＆デプロイガイド
+
+このガイドは、Node.js、Git Bash、VSCode のインストールから、GitHub でのコード取得、Supabase を用いたデータベース設定、ローカルサーバーの起動、Vercel へのデプロイまでの一連の流れを説明しています。
+
+必要なツールのインストール
+【Node.js のインストール】 URL: https://nodejs.org/ 公式サイトから最新版の Node.js をダウンロードしてインストールしてください。
+
+【Git Bash のインストール】 URL: https://gitforwindows.org/ Git Bash をインストールすると、Windows でも Unix ライクなシェルが利用可能になります。
+
+【VSCode のインストール】 URL: https://code.visualstudio.com/Download お使いの環境に合わせた VSCode をインストールしてください。
+
+インストール後の基本確認
+
+コマンドプロンプトで確認
+・「Win + R」で「cmd」と入力してコマンドプロンプトを開く。
+・以下のコマンドを実行してバージョンを確認：
+node -v
+npm -v
+・エラーが出る場合は、Node.js のインストールを再確認する。
+
+VSCode のターミナル設定
+・VSCode を起動し、Ctrl + Shift + P でコマンドパレットを開く。
+・「Terminal: Select Default Profile」と入力し、表示されるリストから「Git Bash」を選択する。
+
+VSCode の日本語化
+・サイドバーの「Extensions」アイコンをクリック。
+・検索欄に「Japanese Language Pack for Visual Studio Code」と入力し、拡張機能をインストールする。
+・右下に表示される「Change Language and Restart」をクリックして VSCode を再起動する。
+
+GitHub からのコード取得
+
+VSCode でリポジトリをクローン
+・VSCode を起動し、Ctrl + Shift + P で「Git: Clone」を選択。
+・共同開発用の GitHub リポジトリの URL（リポジトリ→Code の HTTPS リンク）を入力し、ローカル保存先を指定してクローンする。
+
+プロジェクト初期設定
+【4-1. 足りないファイルの作成】
+・プロジェクトのトップディレクトリに「.env.local」という名前のファイルを作成（ドットを忘れずに）。
+・このファイルは後で環境変数の設定に使用するので、初めは空でOK。
+
+【4-2. 依存関係のインストール】
+・VSCode のターミナル（Git Bash が既定になっていることを確認）を開き、以下のコマンドを実行：
+npm install
+・エラーが発生する場合は、前のセットアップ（Node.js や VSCode の設定）を再確認する。
+
+データベースの設定（Supabase）
+【5-1. Supabase アカウント作成とプロジェクト設定】
+・URL: https://supabase.com/
+・Supabase にアクセスし、アカウントを作成。（GitHub アカウント連携推奨）
+・プロジェクト作成時は、サーバーリージョンとして「Tokyo」を選択。
+
+【5-2. .env.local への設定情報の記入】
+・.env.local に以下の項目を記載：
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_COOKIE=
+・Supabase プロジェクトの「Project Settings → Data API」から取得した情報を入力する。
+　- Project URL → NEXT_PUBLIC_SUPABASE_URL
+　- Project API Keys（anon/public のキー） → NEXT_PUBLIC_SUPABASE_ANON_KEY
+・NEXT_PUBLIC_COOKIE の例：
+NEXT_PUBLIC_COOKIE=sb-謎の文字列-auth-token
+※「＝」の前後に余分な空白が入らないよう注意する。
+
+【5-3. SQL エディタでテーブル＆RLS 設定】
+・Supabase プロジェクト画面のサイドバーから「SQL Editor」を開く。
+・VSCode 内の utils/sqleditor フォルダにある各 SQL スニペットのコードをコピーし、SQL Editor に貼り付ける。
+・貼り付けたら右下の「Run」ボタンをクリックし、エラーが出ないか確認する。
+
+【5-4. 型定義の生成】
+・ターミナルで以下を実行：
+npm install supabase --save-dev
+npx supabase login
+・ログイン後、以下のコマンドで TypeScript 用の型定義を生成：
+npx supabase gen types typescript --project-id さっきの謎の文字列 --schema public > types/database.ts
+※ API キー等の情報が公開されないよう、取り扱いに注意する。
+
+サイトの起動
+・VSCode のターミナル（Git Bash）で以下のコマンドを実行：
+npm run dev
+・正常に起動すれば、ブラウザでサイトを確認可能。
+
+Vercel へのデプロイ
+【7-1. Vercel アカウント作成とプロジェクトのインポート】
+・URL: https://vercel.com/
+・GitHub アカウントで登録後、「Add New Project」をクリックし、対象リポジトリを選択してインポートする。
+
+【7-2. 環境変数の設定】
+・Vercel のプロジェクト設定内の「Environment Variables」に、.env.local の内容を登録する。
+　例：
+　Key: NEXT_PUBLIC_SUPABASE_URL → Value: Supabase の Project URL
+　Key: NEXT_PUBLIC_SUPABASE_ANON_KEY → Value: API キー
+　Key: NEXT_PUBLIC_COOKIE → Value: Cookie 設定
+・各値を正しく入力後、設定を保存する。
+
+【7-3. デプロイの実行】
+・設定完了後、「Deploy」をクリックする。
+・初回は 40～70 秒程度かかる。エラーが発生した場合はエラーメッセージを確認し、公式ドキュメントや Web 検索で対応する。
+
+その後の作業
+【ファイル構造と仕組みの把握】
+・プロジェクトの大まかな構造や動作の仕組みについて確認する。
+
+【データベースへの情報入力】
+・status テーブルなど、サイトで使用するデータは注意深く入力・更新する。
+　※status テーブルの name カラムは、サイト側の title と一致させる必要がある。
+
+【デプロイの更新】
+・変更があった場合、再度 Vercel へデプロイし、環境変数の更新やエラー対応を行う。
+
+以上が基本的なセットアップおよびデプロイの流れです。 不明な点があれば、公式ドキュメントや Web 検索で情報を確認するか、コミュニティに相談して解決してください。
+
+プロジェクト開始の第一歩として、このガイドを参考にしっかり環境を整えてください。
+
+頑張ってください！

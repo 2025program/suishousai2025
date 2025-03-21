@@ -1,0 +1,8 @@
+データベースのデータ型を持ってくる方法
+①supabaseにログインする(コンソール supabase login)
+②以下のコマンドのYOURID部分にリンクのID部分を入れる
+
+注意 このメモにIDを記入した状態でコミットすると漏洩するから気を付けてね
+まだ設定してないけどgitignoreに設定してもよかったかもね
+
+npx supabase gen types typescript --project-id YOURID --schema public > types/database.ts
