@@ -4,6 +4,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import Header from "@/components/bread/Header";
 import { BreadcrumbProvider } from "@/components/bread/BreadcrumbContext";
 import { CookieConsent } from "@/components/CookieConsent";
+import HamburgerMenu from "@/components/HamburgerMenu";
 
 const kosugi = Noto_Sans_JP({ weight: "500", subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
   return (
     <html lang="jp">
       <body className={kosugi.className}>
+        <HamburgerMenu />
         <main>
           {children}
         </main>

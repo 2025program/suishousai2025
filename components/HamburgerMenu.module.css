@@ -1,0 +1,353 @@
+/* HamburgerMenu.module.css */
+
+.l-wrap {
+    overflow: clip;
+}
+
+.l-nav__button {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    text-align: right;
+    background-color: #FFEF37;
+    cursor: pointer;
+    z-index: 10;
+}
+
+@media (max-width: 1500px) {
+    .l-nav__button {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 767px) {
+    .l-nav__button {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.l-nav__buttonInner {
+    position: relative;
+    top: 40px;
+    right: 70px;
+}
+
+@media (max-width: 1500px) {
+    .l-nav__buttonInner {
+        top: 32px;
+        right: 56px;
+    }
+}
+
+@media (max-width: 767px) {
+    .l-nav__buttonInner {
+        top: 20px;
+        right: 30px;
+    }
+}
+
+/* トグル状態時の変化 */
+.is-active.l-nav__button .top {
+    transform: translateY(12px);
+}
+
+@media (max-width: 1500px) {
+    .is-active.l-nav__button .top {
+        transform: translateY(8px);
+    }
+}
+
+@media (max-width: 767px) {
+    .is-active.l-nav__button .top {
+        transform: translateY(5px);
+    }
+}
+
+.is-active.l-nav__button .bottom {
+    transform: translateY(-12px);
+}
+
+@media (max-width: 1500px) {
+    .is-active.l-nav__button .bottom {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 767px) {
+    .is-active.l-nav__button .bottom {
+        transform: translateY(-5px);
+    }
+}
+
+.l-nav__button span {
+    display: block;
+    height: 8px;
+    margin-left: auto;
+    background-color: #222;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 767px) {
+    .l-nav__button span {
+        height: 4px;
+    }
+}
+
+.l-nav__button .top {
+    width: 100px;
+}
+
+@media (max-width: 1500px) {
+    .l-nav__button .top {
+        width: 80px;
+    }
+}
+
+@media (max-width: 767px) {
+    .l-nav__button .top {
+        width: 42px;
+    }
+}
+
+.l-nav__button .bottom {
+    width: 64px;
+    margin-top: 16px;
+}
+
+@media (max-width: 1500px) {
+    .l-nav__button .bottom {
+        width: 44px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 767px) {
+    .l-nav__button .bottom {
+        width: 24px;
+        margin-top: 6px;
+    }
+}
+
+@keyframes out {
+    0% {
+        z-index: 8;
+    }
+
+    90% {
+        z-index: -1;
+    }
+
+    100% {
+        z-index: -1;
+    }
+}
+
+@keyframes in {
+    0% {
+        z-index: -1;
+    }
+
+    100% {
+        z-index: 8;
+    }
+}
+
+.l-nav__main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    animation: out 0.8s forwards;
+    z-index: -1;
+}
+
+.is-active.l-nav__main {
+    z-index: 8;
+    animation: in 0.1s forwards;
+}
+
+.l-nav__mainInner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.l-nav__left {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    background-color: #222;
+    transform: translateY(-100%);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.is-active.l-nav__left {
+    transform: translateY(0);
+}
+
+.l-nav__left::before,
+.l-nav__left::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10.4%;
+    width: 3px;
+}
+
+@media (max-width: 767px) {
+
+    .l-nav__left::before,
+    .l-nav__left::after {
+        left: 22.4%;
+    }
+}
+
+.l-nav__left::before {
+    height: 100%;
+    background-color: #727272;
+}
+
+.l-nav__left::after {
+    height: 150px;
+    background-color: #FFEF37;
+}
+
+.l-nav__title {
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    font-size: 10.4vw;
+    font-family: Impact;
+    -webkit-text-stroke: 2px #727272;
+}
+
+@media (max-width: 767px) {
+    .l-nav__title {
+        display: none;
+    }
+}
+
+.l-nav__right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    transform: translateX(100%);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    background-color: #222;
+}
+
+@media (max-width: 767px) {
+    .l-nav__right {
+        flex: 4;
+    }
+}
+
+.l-nav__rightInner {
+    width: 100%;
+}
+
+.l-nav__rightBg {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 21%;
+    background-color: #FFEF37;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.is-active.l-nav__right {
+    transform: translateX(0);
+}
+
+.is-active.l-nav__right .l-nav__rightBg {
+    transform: scaleX(1);
+}
+
+.l-nav__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.l-nav__item {
+    position: relative;
+    margin-top: 32px;
+}
+
+.l-nav__item:first-of-type {
+    margin-top: 0;
+}
+
+.l-nav__item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: left center;
+    width: 24%;
+    height: 3px;
+    background-color: #222;
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.l-nav__item a {
+    display: block;
+    text-align: center;
+    font-family: Impact;
+    font-size: 4.2vw;
+    line-height: 1;
+}
+
+@media (max-width: 767px) {
+    .l-nav__item a {
+        font-size: 8.2vw;
+    }
+}
+
+.l-nav__item:hover::before {
+    transform: translateY(-50%) scaleX(1);
+}
+
+.l-nav__rightBg-1 {
+    top: 0%;
+    transition-delay: 0.28s;
+}
+
+.l-nav__rightBg-2 {
+    top: 20%;
+    transition-delay: 0.38s;
+}
+
+.l-nav__rightBg-3 {
+    top: 40%;
+    transition-delay: 0.48s;
+}
+
+.l-nav__rightBg-4 {
+    top: 60%;
+    transition-delay: 0.58s;
+}
+
+.l-nav__rightBg-5 {
+    top: 80%;
+    transition-delay: 0.68s;
+}
+
+/* ※ html, body などのグローバルスタイルは別途設定してください */
