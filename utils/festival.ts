@@ -35,10 +35,12 @@ export const festivalItems: FestivalItem[] = [
     { title: '1-1', attributes: [Sun], floor: 4, x: 1165, y: 500 },
     { title: '1-2', attributes: [Sun], floor: 4, x: 1085, y: 500 },
     { title: '1-3', attributes: [Sun], floor: 4, x: 935, y: 500 },
-    //{ title: '1-4', attributes: [Sun], floor: 4, x: 852, y: 500 },
-    //{ title: '1-5', attributes: [Sun], floor: 4, x: 768, y: 500 },
-    //{ title: '1-6', attributes: [Sun], floor: 4, x: 683, y: 500 },
-    //{ title: '1-7', attributes: [Sun], floor: 4, x: 533, y: 500 },
+    { title: '1-4', attributes: [Sun], floor: 4, x: 852, y: 500 },
+    { title: '1-5', attributes: [Sun], floor: 4, x: 768, y: 500 },
+    { title: '1-6', attributes: [Sun], floor: 4, x: 683, y: 500 },
+    { title: '1-7', attributes: [Sun], floor: 4, x: 533, y: 500 },
+    { title: '1-8', attributes: [Sun], floor: 4, x: 533, y: 500 },
+    { title: '1-9', attributes: [Sun], floor: 4, x: 533, y: 500 },
     // 焼きそば：食販かつ全日制の属性を持たせる
     { title: '焼きそば', reading: "やきそば", attributes: [Sun, Soup], floor: 1, x: 865, y: 300 },
     // 野外ステージ
