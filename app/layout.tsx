@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "翠翔祭HP",
-    description: "有志の学生一人によって作成されたサイトです。公式なサイトではないためご注意ください。",
+    description: "横浜翠嵐高等学校",
     images: ["https://swits.vercel.app/twitter-image.jpg"], // Twitter用の画像URL
   },
   // 他にも必要に応じて設定可能
