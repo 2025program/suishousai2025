@@ -74,7 +74,7 @@ const WelcomeCard: React.FC = () => {
             <div className={styles.decorativeBand}></div>
 
             <div className={styles.content}>
-                <h1 className={`${styles.title} ${pacifico.className}`}>Welcome</h1>
+                <h1 className={`${styles.title} ${pacifico.className}`}>DiVE</h1>
                 <p className={`${styles.description}`}>
                     2025年。新たに創り出す翠翔祭。
                 </p>
