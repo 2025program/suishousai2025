@@ -16,8 +16,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { ViewVerticalIcon } from "@radix-ui/react-icons"
 import { getCookieValue, setSiteCookie, getCookieConsent } from '@/utils/cookieManager'
+import { AnimatedHamburger } from "./AnimatedHamburger"
 
 const SIDEBAR_COOKIE_NAME = "sidebar:status"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24
@@ -271,10 +271,10 @@ const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, open } = useSidebar() // open 状態を追加で取得
 
   return (
-    <Button
+    <button
       ref={ref}
       data-sidebar="trigger"
       variant="ghost"
@@ -286,9 +286,9 @@ const SidebarTrigger = React.forwardRef<
       }}
       {...props}
     >
-      <ViewVerticalIcon />
+      <AnimatedHamburger isOpen={open} />
       <span className="sr-only">Toggle Sidebar</span>
-    </Button>
+    </button>
   )
 })
 SidebarTrigger.displayName = "SidebarTrigger"

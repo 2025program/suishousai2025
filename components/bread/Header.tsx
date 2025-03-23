@@ -26,29 +26,26 @@ function HeaderContent({ children }: { children: ReactNode }) {
     const { breadcrumbs } = useBreadcrumb();
     const { isMobile, state } = useSidebar();
 
-    const lastBreadcrumb = breadcrumbs[breadcrumbs.length - 1];
-    const dropdownBreadcrumbs = breadcrumbs.slice(0, -1); // 最後以外のパンくずリスト
-
-    // サイドバーの状態に合わせたオフセット設定
+    // ここでは右サイドバー用の調整を行っています
+    const side = "right"; // 右サイドバーの場合
     const SIDEBAR_WIDTH = "16rem";
     const SIDEBAR_WIDTH_ICON = "3rem";
     const sidebarWidth = !isMobile ? (state === "expanded" ? SIDEBAR_WIDTH : SIDEBAR_WIDTH_ICON) : "0";
 
+    // 右サイドバーの場合は、left:0 で右側に余白を作成
+    const headerStyle = isMobile
+        ? { left: 0, width: "100%" }
+        : side === "right"
+            ? { left: 0, right: sidebarWidth, width: `calc(100% - ${sidebarWidth})` }
+            : { left: sidebarWidth, width: `calc(100% - ${sidebarWidth})` };
+
     return (
         <>
-            {/* 固定ヘッダー ※サイドバーの状態に応じて左オフセットと幅を調整 */}
             <header
-                style={{
-                    left: isMobile ? 0 : sidebarWidth,
-                    width: isMobile ? "100%" : `calc(100% - ${sidebarWidth})`,
-                }}
-                className="
-          fixed top-0 z-50 flex h-14 shrink-0 items-center gap-2
-          transition-[width,left] ease-linear bg-white
-        "
+                style={headerStyle}
+                className="w-full fixed top-0 z-50 flex h-14 items-center gap-2 transition-[width,left] ease-linear bg-white"
             >
-                <div className="flex items-center gap-2 px-4">
-                    <SidebarTrigger className="-ml-1" />
+                <div className="w-full flex items-center gap-2 px-4">
                     <Separator orientation="vertical" className="mr-2 h-4" />
                     <Breadcrumb>
                         <BreadcrumbList>
@@ -57,8 +54,7 @@ function HeaderContent({ children }: { children: ReactNode }) {
                                     ホーム
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
-
-                            {dropdownBreadcrumbs.length > 0 && (
+                            {breadcrumbs.length > 1 && (
                                 <>
                                     <BreadcrumbSeparator />
                                     <BreadcrumbItem>
@@ -68,7 +64,7 @@ function HeaderContent({ children }: { children: ReactNode }) {
                                                 <span className="sr-only">Toggle menu</span>
                                             </DropdownMenuTrigger>
                                             <DropdownMenuContent align="start">
-                                                {dropdownBreadcrumbs.map((crumb) => (
+                                                {breadcrumbs.slice(0, -1).map((crumb) => (
                                                     <DropdownMenuItem key={crumb.href}>
                                                         <BreadcrumbLink href={crumb.href} aria-label={`${crumb.name}ページ`}>
                                                             {crumb.name}
@@ -80,34 +76,40 @@ function HeaderContent({ children }: { children: ReactNode }) {
                                     </BreadcrumbItem>
                                 </>
                             )}
-
-                            {lastBreadcrumb && (
+                            {breadcrumbs[breadcrumbs.length - 1] && (
                                 <>
                                     <BreadcrumbSeparator />
                                     <BreadcrumbItem>
-                                        <BreadcrumbLink href={lastBreadcrumb.href} aria-label={`${lastBreadcrumb.name}ページ`}>
-                                            {lastBreadcrumb.name}
+                                        <BreadcrumbLink
+                                            href={breadcrumbs[breadcrumbs.length - 1].href}
+                                            aria-label={`${breadcrumbs[breadcrumbs.length - 1].name}ページ`}
+                                        >
+                                            {breadcrumbs[breadcrumbs.length - 1].name}
                                         </BreadcrumbLink>
                                     </BreadcrumbItem>
                                 </>
                             )}
                         </BreadcrumbList>
                     </Breadcrumb>
+                    <div className="trigger">
+                        <SidebarTrigger className="-ml-1" />
+                    </div>
                 </div>
             </header>
-            {/* 固定ヘッダー分の高さ（ここでは h-16: 約4rem）を空ける */}
+            {/* ヘッダー分の高さを空ける */}
             <div className="pt-14">{children}</div>
         </>
     );
 }
 
+
 export default function Header({ children }: { children: ReactNode }) {
     return (
         <SidebarProvider>
-            <AppSidebar />
             <SidebarInset>
                 <HeaderContent>{children}</HeaderContent>
             </SidebarInset>
+            <AppSidebar />
         </SidebarProvider>
     );
 }

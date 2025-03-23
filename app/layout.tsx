@@ -43,13 +43,18 @@ export default function RootLayout({
   return (
     <html lang="jp">
       <body className={kosugi.className}>
-        <BreadcrumbProvider>
-          <main>
-            <Header>{children}</Header>
-          </main>
-        </BreadcrumbProvider>
+        <main>
+          {children}
+        </main>
         <CookieConsent />
       </body>
     </html>
   );
 }
+
+//没になったUI
+//<BreadcrumbProvider>
+//<main>
+//  <Header>{children}</Header>
+//</main>
+//</BreadcrumbProvider>

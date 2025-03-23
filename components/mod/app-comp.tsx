@@ -189,7 +189,7 @@ const data = { navMain: combinedNavMain, projects };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     return (
-        <Sidebar collapsible="icon" {...props}>
+        <Sidebar collapsible="icon" side="right" variant="sidebar" {...props}>
             <SidebarContent>
                 <NavMain items={data.navMain} />
                 <NavProjects projects={data.projects} />
