@@ -27,7 +27,6 @@ USING (auth.uid() IS NOT NULL);
 -- INSERT: 認証済みユーザーのみ挿入可能
 CREATE POLICY "Allow insert for authenticated" ON announce
 FOR INSERT
-USING (auth.uid() IS NOT NULL)     -- （オプション：挿入前にチェックしたい場合はこの USING 句も追加可能）
 WITH CHECK (auth.uid() IS NOT NULL);
 
 -- UPDATE: 認証済みユーザーのみ更新可能

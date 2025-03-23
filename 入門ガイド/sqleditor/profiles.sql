@@ -21,7 +21,6 @@ USING (auth.uid() = id);
 -- INSERT ポリシー：認証済みユーザーのみ自身のデータを挿入可能
 CREATE POLICY "Allow insert for self" ON profiles
 FOR INSERT
-USING (auth.uid() = id)
 WITH CHECK (auth.uid() = id);
 
 -- DELETE ポリシー：認証済みユーザーのみ自身のデータを削除可能
