@@ -13,7 +13,7 @@
     text-align: right;
     background-color: #FFEF37;
     cursor: pointer;
-    z-index: 10;
+    z-index: 60;
 }
 
 @media (max-width: 1500px) {
@@ -134,25 +134,25 @@
 
 @keyframes out {
     0% {
-        z-index: 8;
+        z-index: 58;
     }
 
     90% {
-        z-index: -1;
+        z-index: 49;
     }
 
     100% {
-        z-index: -1;
+        z-index: 49;
     }
 }
 
 @keyframes in {
     0% {
-        z-index: -1;
+        z-index: 49;
     }
 
     100% {
-        z-index: 8;
+        z-index: 58;
     }
 }
 
@@ -163,19 +163,23 @@
     width: 100vw;
     height: 100vh;
     animation: out 0.8s forwards;
-    z-index: -1;
+    z-index: 49;
+    pointer-events: none;
+    /* クリックをブロックしない */
 }
 
 .is-active.l-nav__main {
-    z-index: 8;
+    z-index: 58;
     animation: in 0.1s forwards;
+    pointer-events: auto;
+    /* アクティブ時はクリック可能 */
 }
 
 .l-nav__mainInner {
     display: flex;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 49;
 }
 
 .l-nav__left {
