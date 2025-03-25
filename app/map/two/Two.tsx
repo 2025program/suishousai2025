@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useMemo, createRef, RefObject } from "react";
 import { useSearchParams } from "next/navigation";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import styles from "@/components/FlatMap.module.css";
 import { normalizeSearchString } from "@/utils/normalizeKana";
 import { FestivalItem } from "@/types/festival";
@@ -134,15 +133,7 @@ const FloorComponent: React.FC<FloorComponentProps> = ({ floor, containerRef, se
 };
 
 export default function FlatMap() {
-    const { setBreadcrumbs } = useBreadcrumb();
     const searchParams = useSearchParams();
-
-    useEffect(() => {
-        setBreadcrumbs([
-            { name: "マップ", href: "/map" },
-            { name: "平面マップ", href: "/map/two" },
-        ]);
-    }, [setBreadcrumbs]);
 
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [selectedItem, setSelectedItem] = useState<FestivalItem | null>(null);

@@ -1,7 +1,7 @@
 // components/LoginForm.tsx
 'use client'
 
-import { useEffect, useCallback, useTransition } from 'react'
+import { useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { login, logout } from '@/app/admin/login/actions'
 import { Button } from '@/components/ui/button'
@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { useBreadcrumb } from '@/components/bread/BreadcrumbContext'
 import Link from 'next/link'
 
 type LoginFormProps = {
@@ -19,16 +18,6 @@ type LoginFormProps = {
 export function LoginForm({ user }: LoginFormProps) {
     const [isPending, startTransition] = useTransition()
     const router = useRouter()
-
-    // Breadcrumb の更新（クライアント側）
-    const { setBreadcrumbs } = useBreadcrumb()
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([{ name: '管理', href: '/admin/login' }])
-    }, [setBreadcrumbs])
-
-    useEffect(() => {
-        updateBreadcrumbs()
-    }, [updateBreadcrumbs])
 
     const handleLogout = async () => {
         startTransition(async () => {

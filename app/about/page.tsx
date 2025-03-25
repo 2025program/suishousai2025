@@ -1,18 +1,7 @@
 "use client";
-import { useEffect, useCallback } from "react";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import "./about.css"
 
 export default function Stuff() {
-    const { setBreadcrumbs } = useBreadcrumb();
-
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([{ name: "概要", href: "/about" }, { name: "スタッフ", href: "/about/stuff" }]);
-    }, [setBreadcrumbs]);
-
-    useEffect(() => {
-        updateBreadcrumbs();
-    }, [updateBreadcrumbs]);
 
     //cssの設定方法 同じディレクトリにabout.cssがあるからそこで指定してほしい
     //設定方法はhtmlと同じ

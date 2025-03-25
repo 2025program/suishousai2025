@@ -1,0 +1,168 @@
+.eventcontent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.e-boxcontent {
+    width: 100%;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.e-title {
+    font-size: 80px;
+}
+
+@media (max-width: 768px) {
+    .e-title {
+        font-size: 50px;
+    }
+}
+
+.e-content {
+    width: 100%;
+}
+
+.e-search {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.e-searchbox {
+    width: 60%;
+    height: 50px;
+    border: 2px #000000 solid;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.e-iconbox {
+    width: 100%;
+    text-align: center;
+}
+
+.e-iconnomal {
+    margin: 20px;
+    border: 2px #000000 solid;
+}
+
+.e-iconclick {
+    background-color: aqua;
+}
+
+.e-iconunclick:hover {
+    background-color: aliceblue;
+}
+
+.e-icontitle {
+    width: 100px;
+    padding: 10px;
+}
+
+/* 外側コンテナ：画面中央に配置 */
+.e-eventbox {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* 内側グリッド：デフォルト（890px未満）は2カラム */
+.e-eventbox-f {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    /* 約Tailwindのgap-6 */
+    width: 100%;
+}
+
+/* 1600px以上の場合は3カラム */
+@media (min-width: 1600px) {
+    .e-eventbox-f {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* カード基本スタイル */
+/* デフォルトは縦型レイアウト（890px未満） */
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 画像部分：縦型の場合は全幅、自然な高さ */
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* コンテンツ部分 */
+.card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-title {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.card-group,
+.card-location {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* エラーメッセージ：グリッド全体に横断表示 */
+.error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: red;
+}
+
+/* 890px以上の場合：カードを横型に変更 */
+@media (min-width: 890px) {
+    .card {
+        flex-direction: row;
+    }
+
+    /* 画像部分：固定サイズの正方形 */
+    .card-image {
+        flex: 0 0 150px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+    }
+}

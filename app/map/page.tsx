@@ -1,19 +1,6 @@
-"use client";
-import { useEffect, useCallback } from "react";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import Link from "next/link";
 
 export default function Map() {
-    const { setBreadcrumbs } = useBreadcrumb();
-
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([{ name: "マップ", href: "/map" }]);
-    }, [setBreadcrumbs]);
-
-    useEffect(() => {
-        updateBreadcrumbs();
-    }, [updateBreadcrumbs]);
-
     return (
         <div className="flex flex-col md:flex-row h-[calc(100vh-3.5rem)] w-full">
             <Link href="/map/two" className="group flex-1 relative flex flex-col items-center justify-center bg-blue-100 hover:bg-blue-200 transition-all">

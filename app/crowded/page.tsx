@@ -1,18 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import { supabase } from "@/utils/supabase/supabase";
 import TicketItem, { TicketAnnouncement } from "@/components/TicketAnnouncementBox/TicketItem";
 
 export default function Crowded() {
-    const { setBreadcrumbs } = useBreadcrumb();
     const [tickets, setTickets] = useState<TicketAnnouncement[]>([]);
     const [loading, setLoading] = useState(true);
-
-    // Breadcrumb を更新
-    useEffect(() => {
-        setBreadcrumbs([{ name: "整理券", href: "/crowded" }]);
-    }, [setBreadcrumbs]);
 
     // Supabase から numbered が true の整理券情報を取得
     useEffect(() => {

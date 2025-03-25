@@ -1,7 +1,6 @@
 // pages/Settings.tsx
 "use client"
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getCookieConsent, setCookieConsent, deleteAllSiteCookies } from '@/utils/cookieManager'
 
 const Settings: React.FC = () => {
@@ -22,16 +21,6 @@ const Settings: React.FC = () => {
             // 他のクッキーも必要に応じて削除
         }
     }
-
-    const { setBreadcrumbs } = useBreadcrumb();
-
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([{ name: "設定", href: "/setting" }]);
-    }, [setBreadcrumbs]);
-
-    useEffect(() => {
-        updateBreadcrumbs();
-    }, [updateBreadcrumbs]);
 
     return (
         <div className="p-8">

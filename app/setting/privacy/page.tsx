@@ -1,20 +1,4 @@
-"use client"
-import React, { useEffect, useCallback } from 'react'
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
-
 const Privacy: React.FC = () => {
-    const { setBreadcrumbs } = useBreadcrumb();
-
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([
-            { name: "設定", href: "/setting" },
-            { name: "プライバシーポリシー", href: "/setting/privacy" }
-        ]);
-    }, [setBreadcrumbs]);
-
-    useEffect(() => {
-        updateBreadcrumbs();
-    }, [updateBreadcrumbs]);
 
     return (
         <main className="p-8">

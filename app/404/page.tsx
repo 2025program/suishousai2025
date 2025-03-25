@@ -1,19 +1,7 @@
 "use client";
-import { useEffect, useCallback } from "react";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import Link from "next/link";
 
 export default function NotfoundClass() {
-    const { setBreadcrumbs } = useBreadcrumb();
-
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([{ name: "存在しません", href: "/404" }]);
-    }, [setBreadcrumbs]);
-
-    useEffect(() => {
-        updateBreadcrumbs();
-    }, [updateBreadcrumbs]);
-
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-6">
             <h1 className="text-4xl font-bold">404</h1>

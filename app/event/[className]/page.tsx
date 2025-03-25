@@ -1,11 +1,10 @@
 // /app/event/page.tsx
 "use client";
 
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import { festivalItems } from "@/utils/festival";
 import { FestivalDetail, festivalDetail } from "@/utils/festivaldetail";
 import { FestivalItem } from "@/types/festival";
@@ -17,21 +16,10 @@ export default function ClassPage() {
     const router = useRouter();
     const params = useParams();
     const { className } = params;
-    const { setBreadcrumbs } = useBreadcrumb();
     const [event, setEvent] = useState<FestivalItem | null>(null);
     const [detail, setDetail] = useState<FestivalDetail | null>(null);
     // 混雑状況ではなくステータスメッセージを扱う
     const [statusMessage, setStatusMessage] = useState<string | null>(null);
-
-    const updateBreadcrumbs = useCallback(() => {
-        if (className) {
-            const decodedClassName = decodeURIComponent(className as string);
-            setBreadcrumbs([
-                { name: "イベント", href: "/event" },
-                { name: decodedClassName, href: `/event/${className}` },
-            ]);
-        }
-    }, [className, setBreadcrumbs]);
 
     useEffect(() => {
         if (className) {
@@ -52,9 +40,8 @@ export default function ClassPage() {
             if (foundDetail) {
                 setDetail(foundDetail);
             }
-            updateBreadcrumbs();
         }
-    }, [className, updateBreadcrumbs, router]);
+    }, [className, router]);
 
     // イベントが取得できたら、Supabase からステータスメッセージを取得
     useEffect(() => {

@@ -1,8 +1,6 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useBreadcrumb } from '@/components/bread/BreadcrumbContext'
-import { Button } from '@/components/ui/button'
 import AnnouncementManager from './AnnouncementManager'
 import StatusManager from './StatusManager'
 
@@ -105,15 +103,9 @@ const getVariants = (
 }
 
 export default function DashboardClient() {
-    const { setBreadcrumbs } = useBreadcrumb()
     const [activeTab, setActiveTab] = useState<'announcement' | 'status'>('announcement')
     // 前回のタブ状態を保持するカスタムフック
     const prevTab = usePrevious(activeTab)
-
-    // パンくずリストの設定
-    useEffect(() => {
-        setBreadcrumbs([{ name: '編集ダッシュボード', href: '/admin/dashboard' }])
-    }, [setBreadcrumbs])
 
     return (
         <div className="p-6">

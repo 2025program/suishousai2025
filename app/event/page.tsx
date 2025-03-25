@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import ClientEventPage from '@/components/event';
+import ClientEventPage from '@/components/event/event';
 
 const EventPage: React.FC = () => {
     return (

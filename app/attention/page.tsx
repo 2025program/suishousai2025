@@ -1,18 +1,4 @@
-"use client"
-import React, { useEffect, useCallback } from 'react';
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
-
 const Attention: React.FC = () => {
-    const { setBreadcrumbs } = useBreadcrumb();
-
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([{ name: "注意事項", href: "/attention" }]);
-    }, [setBreadcrumbs]);
-
-    useEffect(() => {
-        updateBreadcrumbs();
-    }, [updateBreadcrumbs]);
-
     return (
         <main className="p-8">
             <header className="mb-6">

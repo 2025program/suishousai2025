@@ -1,8 +1,7 @@
 // /app/map/three/page.tsx
 "use client";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import styles from "@/components/Map.module.css";
 import { normalizeSearchString } from "@/utils/normalizeKana";
 import { FestivalItem } from "@/types/festival";
@@ -111,17 +110,7 @@ const Pin: React.FC<PinProps> = ({
 const floors = [1, 2, 3, 4];
 
 export default function Three() {
-    const { setBreadcrumbs } = useBreadcrumb();
     const searchParams = useSearchParams();
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([
-            { name: "マップ", href: "/map" },
-            { name: "階層マップ", href: "/map/three" },
-        ]);
-    }, [setBreadcrumbs]);
-    useEffect(() => {
-        updateBreadcrumbs();
-    }, [updateBreadcrumbs]);
 
     const [activeFloor, setActiveFloor] = useState<number>(1);
     const [searchQuery, setSearchQuery] = useState<string>("");

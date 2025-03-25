@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
-//import Header from "@/components/bread/Header";
-//import { BreadcrumbProvider } from "@/components/bread/BreadcrumbContext";
-//もし使うときはcookieなどにも注意してください
 import { CookieConsent } from "@/components/CookieConsent";
 import HamburgerMenu from "@/components/HamburgerMenu";
 
@@ -54,10 +51,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-//没になったUI
-//<BreadcrumbProvider>
-//<main>
-//  <Header>{children}</Header>
-//</main>
-//</BreadcrumbProvider>

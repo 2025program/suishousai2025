@@ -2,7 +2,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import { supabase } from "@/utils/supabase/supabase";
 import { Database } from "@/types/database";
 import NotificationItem from "@/components/NotificationItem/NotificationItem";
@@ -24,14 +23,8 @@ function formatDate(dateStr: string | null): string {
 }
 
 export default function AnnouncePage() {
-    const { setBreadcrumbs } = useBreadcrumb();
     const [announces, setAnnounces] = useState<Announce[]>([]);
     const [loading, setLoading] = useState(true);
-
-    // Breadcrumb を更新
-    useEffect(() => {
-        setBreadcrumbs([{ name: "お知らせ", href: "/announce" }]);
-    }, [setBreadcrumbs]);
 
     // announce テーブルからデータを取得
     useEffect(() => {
