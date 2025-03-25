@@ -88,21 +88,14 @@ const HamburgerMenu: React.FC = () => {
                 <div className={`${styles['l-nav__main']} ${isActive ? styles['is-active'] : ''}`}>
                     <div className={styles['l-nav__mainInner']}>
                         <div className={`${styles['l-nav__left']} ${isActive ? styles['is-active'] : ''}`} onClick={toggleMenu}>
-                            <picture>
-                                <source
-                                    type="image/webp"
-                                    media="(min-width:768px)"
-                                    srcSet="/welcome/mv_copy.webp"
-                                />
-                                <Image
-                                    className={`${styles['pic-left']}`}
-                                    src="/welcome/mv_copy_sp.webp"
-                                    alt="主役になろう"
-                                    width={594}
-                                    height={197}
-                                    loading="eager"
-                                />
-                            </picture>
+                            <Image
+                                className={`${styles['pic-left']}`}
+                                src="/welcome/mv_copy.webp"
+                                alt="主役になろう"
+                                width={594}
+                                height={197}
+                                loading="eager"
+                            />
                         </div>
                         <div className={`${styles['l-nav__right']} ${isActive ? styles['is-active'] : ''}`}>
                             <div className={styles['l-nav__rightInner']}>
@@ -147,18 +140,8 @@ const HamburgerMenu: React.FC = () => {
                                     <li className={styles['l-nav__item']}>
                                         <a href="/announce">NEWS</a>
                                     </li>
-                                    <li className={styles['l-nav__itemcontent']}>
-                                        <div className={styles['l-nav__item']}>
-                                            <a href="/about" onClick={toggleAboutDropdown}>ABOUT</a>
-                                        </div>
-                                        <ul className={`${styles['l-nav__dropdown']} ${isAboutDropdownOpen ? styles['open'] : ''}`}>
-                                            <li className={styles['l-nav__dropdownItem']}>
-                                                <a href="/about/absui">SUISHOSAI</a>
-                                            </li>
-                                            <li className={styles['l-nav__dropdownItem']}>
-                                                <a href="/about/stuff">STUFF</a>
-                                            </li>
-                                        </ul>
+                                    <li className={styles['l-nav__item']}>
+                                        <a href="/about">ABOUT</a>
                                     </li>
                                 </ul>
                             </div>

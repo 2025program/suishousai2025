@@ -1,30 +1,75 @@
 "use client";
 import { useEffect, useCallback } from "react";
 import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
-import Link from "next/link";
+import "./about.css"
 
-export default function About() {
+export default function Stuff() {
     const { setBreadcrumbs } = useBreadcrumb();
 
     const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([{ name: "概要", href: "/about" }]);
+        setBreadcrumbs([{ name: "概要", href: "/about" }, { name: "スタッフ", href: "/about/stuff" }]);
     }, [setBreadcrumbs]);
 
     useEffect(() => {
         updateBreadcrumbs();
     }, [updateBreadcrumbs]);
 
-    return (
-        <div className="flex flex-col md:flex-row h-[calc(100vh-3.5rem)] w-full">
-            <Link href="/about/absui" className="group flex-1 relative flex flex-col items-center justify-center bg-blue-100 hover:bg-blue-200 transition-all">
-                <h2 className="text-5xl font-bold text-gray-800 z-10">翠翔祭とは</h2>
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-all" />
-            </Link>
+    //cssの設定方法 同じディレクトリにabout.cssがあるからそこで指定してほしい
+    //設定方法はhtmlと同じ
+    //htmlではclass=""だけどそれがclassName=""になったくらいで特にあとは変更はない
+    //注意！nextjsは<h3>とか<h2>とかの区別がないからスタイルでfont-sizeを指定して大きさを調整してね
+    //注意！css設定するときにh1とかで丸ごとの指定できないからクラス名で一括管理して(about.css見て)
+    //例としてタイトル部分のスタイルを設定してみたよ
 
-            <Link href="/about/stuff" className="group flex-1 relative flex flex-col items-center justify-center bg-green-100 hover:bg-green-200 transition-all">
-                <h2 className="text-5xl font-bold text-gray-800 z-10">スタッフ</h2>
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-all" />
-            </Link>
-        </div>
+    return (
+        <main className="">
+            <header className="header">
+                <h1 className="about">About</h1>
+            </header>
+
+            <section className="">
+                <h2>翠翔祭について</h2>
+                <a>翠翔祭とは毎年6月末に行われる神奈川県立横浜翠嵐高校の文化祭です。コロナの年度は一般公開できなかったものの、去年から一般公開を再開し、約１万人の方々に来場いただきました。来場お待ちしております。</a>
+            </section>
+
+            <section className="">
+                <h2>2025年度全日制翠翔祭実行委員長　池田晴彦</h2>
+                <a>ありがたいお言葉</a>
+            </section>
+
+            <section className="">
+                <h2>2025年度定時制翠翔祭実行委員長　？？？？</h2>
+                <a>ありがたいお言葉</a>
+            </section>
+
+            <section className="">
+                <h2 className="">翠翔祭実行委員会総務部紹介</h2>
+                <h3>| 実行委員長</h3>
+                <a className="member-name">　池田晴彦</a>
+                <h3>| 副委員長兼会計長</h3>
+                <a className="member-name">　山口理緒</a>
+                <h3>| 会場長</h3>
+                <a className="member-name">　深堀絢心</a>
+                <h3>| 調理食販部統括責任者</h3>
+                <a className="member-name">　東城英寿</a>
+                <h3>| プログラム部統括責任者</h3>
+                <a className="member-name">　水谷駿佑</a>
+                <h3>| アーチ・広報部統括責任者</h3>
+                <a className="member-name">　浅井心遙</a>
+                <h3>| SP部統括責任者</h3>
+                <a className="member-name">　𠮷岡太郎</a>
+                <h3>| 後夜祭・ステージ部統括責任者</h3>
+                <a className="member-name">　富永恵未</a>
+            </section>
+
+            <section className="mb-6">
+                <h2 className="text-xl mb-2">ウェブサイト開発</h2>
+                <a className="member-name">
+                    Pent &#40;横浜翠嵐所属&#41;
+                </a>
+            </section>
+
+
+        </main>
     );
 }

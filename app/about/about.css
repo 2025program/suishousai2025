@@ -1,0 +1,40 @@
+/* 注意
+
+ダメなやつ
+h2 {
+    font-size: 20px;
+}
+
+この設定方法ダメ！
+その代わりにクラス名で管理して！
+例えば<h2 className="h2">みたいに指定してクラス名でcss割り当てるならok
+
+okなやつ
+.h2 {
+    font-size: 20px;
+}
+
+だからいま<h3>| 実行委員長</h3>みたいに指定してると思うけどこれを
+<h3 className="">| 実行委員長</h3>にして名前つけてあげて
+分からないことあったら聞いて。
+*/
+
+/*サンプル設定*/
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.about {
+    font-size: 80px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .about {
+        font-size: 50px;
+    }
+}

@@ -236,6 +236,12 @@
     padding: 10px;
 }
 
+@media (max-width: 768px) {
+    .pic-left {
+        display: none;
+    }
+}
+
 .l-nav__title {
     letter-spacing: 0.02em;
     line-height: 1.1;
