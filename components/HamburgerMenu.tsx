@@ -86,7 +86,7 @@ const HamburgerMenu: React.FC = () => {
             <nav className={styles['l-nav']}>
                 <div className={`${styles['l-nav__main']} ${isActive ? styles['is-active'] : ''}`}>
                     <div className={styles['l-nav__mainInner']}>
-                        <div className={`${styles['l-nav__left']} ${isActive ? styles['is-active'] : ''}`}>
+                        <div className={`${styles['l-nav__left']} ${isActive ? styles['is-active'] : ''}`} onClick={toggleMenu}>
                             <h1 className={styles['l-nav__title']}>
                                 SUIRAN<br />WEB
                             </h1>
