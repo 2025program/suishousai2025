@@ -59,7 +59,7 @@ const WelcomeCard: React.FC = () => {
                                                 <div className={styles['c-titleAnimation__textImageInner']}>
                                                     <Image
                                                         className={`${styles['c-titleAnimation__textImage']} ${styles['_mv_']} ${styles['im']}`}
-                                                        src="/title.png"
+                                                        src="/welcome/title.png"
                                                         alt=""
                                                         width={500}
                                                         height={100}
@@ -68,7 +68,7 @@ const WelcomeCard: React.FC = () => {
                                                 <div className={styles['c-titleAnimation__textImageInner']}>
                                                     <Image
                                                         className={`${styles['c-titleAnimation__textImage']} ${styles['_mv_']} ${styles['im']}`}
-                                                        src="/title.png"
+                                                        src="/welcome/title.png"
                                                         alt=""
                                                         width={500}
                                                         height={100}
@@ -81,11 +81,11 @@ const WelcomeCard: React.FC = () => {
                                                 <source
                                                     type="image/webp"
                                                     media="(min-width:768px)"
-                                                    srcSet="/logopc.png"
+                                                    srcSet="/welcome/logopc.png"
                                                 />
                                                 <Image
                                                     className={`${styles['l-topMv__Logo']} ${styles['im']}`}
-                                                    src="/logosp.png"
+                                                    src="/welcome/logosp.png"
                                                     alt="右画像"
                                                     width={497}
                                                     height={427}
@@ -98,11 +98,11 @@ const WelcomeCard: React.FC = () => {
                                                 <source
                                                     type="image/webp"
                                                     media="(min-width:768px)"
-                                                    srcSet="/mv_copy.webp"
+                                                    srcSet="/welcome/mv_copy.webp"
                                                 />
                                                 <Image
                                                     className={`${styles['l-topMv__Copy']} ${styles['im']}`}
-                                                    src="/mv_copy_sp.webp"
+                                                    src="/welcome/mv_copy_sp.webp"
                                                     alt="主役になろう"
                                                     width={594}
                                                     height={197}
@@ -117,11 +117,11 @@ const WelcomeCard: React.FC = () => {
                                         <source
                                             type="image/webp"
                                             media="(min-width:768px)"
-                                            srcSet="/rightpc.png"
+                                            srcSet="/welcome/rightpc.png"
                                         />
                                         <Image
                                             className={`${styles['l-topMv__CarouselImage']} ${styles['im']}`}
-                                            src="/rightsp.png"
+                                            src="/welcome/rightsp.png"
                                             alt=""
                                             width={750}
                                             height={991}

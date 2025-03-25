@@ -238,3 +238,10 @@
         width: 30.9375%
     }
 }
+
+@media (min-width:960px) {
+    .heda {
+        height: 100vh;
+        overflow-y: hidden;
+    }
+}
