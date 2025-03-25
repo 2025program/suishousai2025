@@ -1,11 +1,77 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './HamburgerMenu.module.css';
+import { getCookieConsent, getCookieValue, setSiteCookie } from '@/utils/cookieManager';
+
+const SIDEBAR_COOKIE_MAX_AGE = 86400; // 例: 1日分の秒数
 
 const HamburgerMenu: React.FC = () => {
     const [isActive, setIsActive] = useState(false);
+    const [isMapDropdownOpen, setIsMapDropdownOpen] = useState(false);
+    const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
+    const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+
+    // コンポーネントマウント時に各ドロップダウンの状態をクッキーから取得
+    useEffect(() => {
+        const consent = getCookieConsent();
+        if (!consent) return;
+
+        const mapVal = getCookieValue('collapsible_map');
+        if (mapVal !== null) {
+            setIsMapDropdownOpen(mapVal === 'true');
+        }
+
+        const eventVal = getCookieValue('collapsible_event');
+        if (eventVal !== null) {
+            setIsEventDropdownOpen(eventVal === 'true');
+        }
+
+        const aboutVal = getCookieValue('collapsible_about');
+        if (aboutVal !== null) {
+            setIsAboutDropdownOpen(aboutVal === 'true');
+        }
+    }, []);
+
     const toggleMenu = () => setIsActive(!isActive);
+
+    // 各ドロップダウンの状態更新とクッキー保存用ハンドラー
+    const handleMapDropdownChange = (value: boolean) => {
+        setIsMapDropdownOpen(value);
+        if (getCookieConsent()) {
+            setSiteCookie('collapsible_map', value.toString(), SIDEBAR_COOKIE_MAX_AGE);
+        }
+    };
+
+    const handleEventDropdownChange = (value: boolean) => {
+        setIsEventDropdownOpen(value);
+        if (getCookieConsent()) {
+            setSiteCookie('collapsible_event', value.toString(), SIDEBAR_COOKIE_MAX_AGE);
+        }
+    };
+
+    const handleAboutDropdownChange = (value: boolean) => {
+        setIsAboutDropdownOpen(value);
+        if (getCookieConsent()) {
+            setSiteCookie('collapsible_about', value.toString(), SIDEBAR_COOKIE_MAX_AGE);
+        }
+    };
+
+    // トグル用イベントハンドラー（クリック時に状態を反転）
+    const toggleMapDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        handleMapDropdownChange(!isMapDropdownOpen);
+    };
+
+    const toggleEventDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        handleEventDropdownChange(!isEventDropdownOpen);
+    };
+
+    const toggleAboutDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        handleAboutDropdownChange(!isAboutDropdownOpen);
+    };
 
     return (
         <div className={styles['l-wrap']}>
@@ -28,20 +94,50 @@ const HamburgerMenu: React.FC = () => {
                                     <li className={styles['l-nav__item']}>
                                         <a href="/">TOP</a>
                                     </li>
-                                    <li className={styles['l-nav__item']}>
-                                        <a href="/about">ABOUT</a>
+                                    <li className={styles['l-nav__itemcontent']}>
+                                        <div className={styles['l-nav__item']}>
+                                            <a href="/map" onClick={toggleMapDropdown}>MAP</a>
+                                        </div>
+                                        <ul className={`${styles['l-nav__dropdown']} ${isMapDropdownOpen ? styles['open'] : ''}`}>
+                                            <li className={styles['l-nav__dropdownItem']}>
+                                                <a href="/map/two">2D MAP</a>
+                                            </li>
+                                            <li className={styles['l-nav__dropdownItem']}>
+                                                <a href="/map/three">3D MAP</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li className={styles['l-nav__itemcontent']}>
+                                        <div className={styles['l-nav__item']}>
+                                            <a href="/event" onClick={toggleEventDropdown}>EVENT</a>
+                                        </div>
+                                        <ul className={`${styles['l-nav__dropdown']} ${isEventDropdownOpen ? styles['open'] : ''}`}>
+                                            <li className={styles['l-nav__dropdownItem']}>
+                                                <a href="/event/upcoming">Upcoming Events</a>
+                                            </li>
+                                            <li className={styles['l-nav__dropdownItem']}>
+                                                <a href="/event/past">Past Events</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li className={styles['l-nav__item']}>
-                                        <a href="/event">EVENT</a>
+                                        <a href="/timetable">TIMETABLE</a>
                                     </li>
                                     <li className={styles['l-nav__item']}>
                                         <a href="/announce">NEWS</a>
                                     </li>
-                                    <li className={styles['l-nav__item']}>
-                                        <a href="/setting">SETTING</a>
-                                    </li>
-                                    <li className={styles['l-nav__item']}>
-                                        <a href="/admin/login">ADMIN</a>
+                                    <li className={styles['l-nav__itemcontent']}>
+                                        <div className={styles['l-nav__item']}>
+                                            <a href="/about" onClick={toggleAboutDropdown}>ABOUT</a>
+                                        </div>
+                                        <ul className={`${styles['l-nav__dropdown']} ${isAboutDropdownOpen ? styles['open'] : ''}`}>
+                                            <li className={styles['l-nav__dropdownItem']}>
+                                                <a href="/about/absui">SUISHOSAI</a>
+                                            </li>
+                                            <li className={styles['l-nav__dropdownItem']}>
+                                                <a href="/about/stuff">STUFF</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </div>

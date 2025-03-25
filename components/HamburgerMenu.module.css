@@ -189,10 +189,12 @@
     align-items: center;
     flex: 1;
     height: 100%;
-    background-color: #222;
+    background-color: #ffffff56;
     transform: translateY(-100%);
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .is-active.l-nav__left {
@@ -218,7 +220,7 @@
 
 .l-nav__left::before {
     height: 100%;
-    background-color: #727272;
+    background-color: #000000;
 }
 
 .l-nav__left::after {
@@ -231,7 +233,8 @@
     line-height: 1.1;
     font-size: 10.4vw;
     font-family: Impact;
-    -webkit-text-stroke: 2px #727272;
+    -webkit-text-stroke: 2px #000000;
+    color: white;
 }
 
 @media (max-width: 767px) {
@@ -250,7 +253,10 @@
     transform: translateX(100%);
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
-    background-color: #222;
+    background-color: #ffffff56;
+    /* 半透明の背景色 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 @media (max-width: 767px) {
@@ -319,6 +325,11 @@
     line-height: 1;
 }
 
+.l-nav__itemcontent {
+    margin-top: 32px;
+    position: relative;
+}
+
 @media (max-width: 767px) {
     .l-nav__item a {
         font-size: 8.2vw;
@@ -355,3 +366,65 @@
 }
 
 /* ※ html, body などのグローバルスタイルは別途設定してください */
+/* 既存のスタイルはそのままで、以下を追加 */
+
+/* ドロップダウンメニューのスタイル */
+.l-nav__dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+    background-color: #fff25f;
+}
+
+.l-nav__dropdown.open {
+    max-height: 200px;
+    /* サブメニューの高さに合わせて調整 */
+}
+
+/* ドロップダウン内の各項目 */
+.l-nav__dropdownItem {
+    position: relative;
+    /* 疑似要素の位置基準にする */
+}
+
+.l-nav__dropdownItem::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: left center;
+    width: 24%;
+    height: 3px;
+    background-color: #222;
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.l-nav__dropdownItem:hover::before {
+    transform: translateY(-50%) scaleX(1);
+}
+
+/* ドロップダウン内のリンクのスタイル（必要に応じて調整） */
+.l-nav__dropdownItem a {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    /* 中央寄せに変更 */
+    font-family: Impact;
+    font-size: 3.5vw;
+    line-height: 1;
+    /* 必要であれば左右のパディングを削除または調整 */
+    padding: 0;
+}
+
+/* 画面サイズに応じた調整例 */
+@media (max-width: 767px) {
+    .l-nav__dropdownItem a {
+        font-size: 6vw;
+        padding-left: 12px;
+    }
+}
