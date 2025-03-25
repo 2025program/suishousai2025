@@ -1,18 +1,6 @@
-"use client";
-import { useEffect, useCallback } from "react";
-import { useBreadcrumb } from "@/components/bread/BreadcrumbContext";
 import Link from "next/link";
 
 export default function NotFound() {
-    const { setBreadcrumbs } = useBreadcrumb();
-
-    const updateBreadcrumbs = useCallback(() => {
-        setBreadcrumbs([{ name: "not found", href: "/" }]);
-    }, [setBreadcrumbs]);
-
-    useEffect(() => {
-        updateBreadcrumbs();
-    }, [updateBreadcrumbs]);
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-6">
