@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import styles from './HamburgerMenu.module.css';
 import { getCookieConsent, getCookieValue, setSiteCookie } from '@/utils/cookieManager';
@@ -87,9 +88,21 @@ const HamburgerMenu: React.FC = () => {
                 <div className={`${styles['l-nav__main']} ${isActive ? styles['is-active'] : ''}`}>
                     <div className={styles['l-nav__mainInner']}>
                         <div className={`${styles['l-nav__left']} ${isActive ? styles['is-active'] : ''}`} onClick={toggleMenu}>
-                            <h1 className={styles['l-nav__title']}>
-                                SUIRAN<br />WEB
-                            </h1>
+                            <picture>
+                                <source
+                                    type="image/webp"
+                                    media="(min-width:768px)"
+                                    srcSet="/welcome/mv_copy.webp"
+                                />
+                                <Image
+                                    className={`${styles['pic-left']}`}
+                                    src="/welcome/mv_copy_sp.webp"
+                                    alt="主役になろう"
+                                    width={594}
+                                    height={197}
+                                    loading="eager"
+                                />
+                            </picture>
                         </div>
                         <div className={`${styles['l-nav__right']} ${isActive ? styles['is-active'] : ''}`}>
                             <div className={styles['l-nav__rightInner']}>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
-import Header from "@/components/bread/Header";
-import { BreadcrumbProvider } from "@/components/bread/BreadcrumbContext";
+//import Header from "@/components/bread/Header";
+//import { BreadcrumbProvider } from "@/components/bread/BreadcrumbContext";
+//もし使うときはcookieなどにも注意してください
 import { CookieConsent } from "@/components/CookieConsent";
 import HamburgerMenu from "@/components/HamburgerMenu";
 
@@ -10,15 +11,15 @@ const kosugi = Noto_Sans_JP({ weight: "500", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "翠翔祭HP",
-  description: "有志の学生一人によって作成されたサイトです。公式なサイトではないためご注意ください。",
+  description: "翠翔祭2025の公式サイトです。有益な情報を公開しています!",
   openGraph: {
     title: "翠翔祭HP",
-    description: "有志の学生一人によって作成されたサイトです。公式なサイトではないためご注意ください。",
-    url: "https://swits.vercel.app/", // あなたのサイトのURLに置き換えてください
+    description: "翠翔祭2025の公式サイトです。有益な情報を公開しています!",
+    url: "https://suishousai2025.vercel.app/", // あなたのサイトのURLに置き換えてください
     siteName: "翠翔祭HP",
     images: [
       {
-        url: "https://swits.vercel.app/og-image.jpg", // プレビューに表示したい画像のURL
+        url: "https://suishousai2025.vercel.app/og-image.jpg", // プレビューに表示したい画像のURL
         width: 1200,
         height: 630,
         alt: "翠翔祭HPのプレビュー画像",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "翠翔祭HP",
     description: "横浜翠嵐高等学校",
-    images: ["https://swits.vercel.app/twitter-image.jpg"], // Twitter用の画像URL
+    images: ["https://suishousai2025.vercel.app/twitter-image.jpg"], // Twitter用の画像URL
   },
   // 他にも必要に応じて設定可能
 };

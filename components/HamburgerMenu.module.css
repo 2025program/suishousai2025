@@ -218,6 +218,8 @@
     }
 }
 
+/* いつか追加する
+
 .l-nav__left::before {
     height: 100%;
     background-color: #000000;
@@ -226,6 +228,12 @@
 .l-nav__left::after {
     height: 150px;
     background-color: #FFEF37;
+}
+
+*/
+
+.pic-left {
+    padding: 10px;
 }
 
 .l-nav__title {
