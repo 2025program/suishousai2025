@@ -116,6 +116,7 @@
     position: relative;
     z-index: 1;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .l-topMv:after {

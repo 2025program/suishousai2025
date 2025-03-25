@@ -33,6 +33,14 @@ const HamburgerMenu: React.FC = () => {
         }
     }, []);
 
+    // サイドバーが開いているときは背景スクロールを無効化
+    useEffect(() => {
+        document.body.style.overflow = isActive ? 'hidden' : '';
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isActive]);
+
     const toggleMenu = () => setIsActive(!isActive);
 
     // 各ドロップダウンの状態更新とクッキー保存用ハンドラー

@@ -291,8 +291,11 @@
 
 .l-nav__list {
     margin: 0;
-    padding: 0;
+    padding-top: 100px;
+    padding-bottom: 100px;
     list-style: none;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 .l-nav__item {
