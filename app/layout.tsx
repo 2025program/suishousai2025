@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 import { CookieConsent } from "@/components/CookieConsent";
-import HamburgerMenu from "@/components/HamburgerMenu";
+import HamburgerMenu from "@/components/HamburgerMenu/HamburgerMenu";
 
 const kosugi = Noto_Sans_JP({ weight: "500", subsets: ["latin"] });
 
