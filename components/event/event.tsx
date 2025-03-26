@@ -1,7 +1,7 @@
 // /app/event/page.tsx
 "use client";
 import Image from 'next/image';
-import React, { useEffect, useCallback, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { festivalItems } from "@/utils/festival";
 import { normalizeSearchString } from "@/utils/normalizeKana";
@@ -143,8 +143,8 @@ const EventPage: React.FC = () => {
                                     </div>
                                     <div className="card-content">
                                         <h3 className="card-title">{item.title}</h3>
-                                        <p className="card-group">グループ</p>
-                                        <p className="card-location">場所</p>
+                                        <p className="card-group">{item.class!}</p>
+                                        <p className="card-location">{item.location!}</p>
                                     </div>
                                 </a>
                             ))

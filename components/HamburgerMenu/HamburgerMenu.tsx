@@ -11,7 +11,6 @@ const HamburgerMenu: React.FC = () => {
     const [isActive, setIsActive] = useState(false);
     const [isMapDropdownOpen, setIsMapDropdownOpen] = useState(false);
     const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
-    const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
 
     // コンポーネントマウント時に各ドロップダウンの状態をクッキーから取得
     useEffect(() => {
@@ -26,11 +25,6 @@ const HamburgerMenu: React.FC = () => {
         const eventVal = getCookieValue('collapsible_event');
         if (eventVal !== null) {
             setIsEventDropdownOpen(eventVal === 'true');
-        }
-
-        const aboutVal = getCookieValue('collapsible_about');
-        if (aboutVal !== null) {
-            setIsAboutDropdownOpen(aboutVal === 'true');
         }
     }, []);
 
@@ -59,13 +53,6 @@ const HamburgerMenu: React.FC = () => {
         }
     };
 
-    const handleAboutDropdownChange = (value: boolean) => {
-        setIsAboutDropdownOpen(value);
-        if (getCookieConsent()) {
-            setSiteCookie('collapsible_about', value.toString(), SIDEBAR_COOKIE_MAX_AGE);
-        }
-    };
-
     // トグル用イベントハンドラー（クリック時に状態を反転）
     const toggleMapDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
@@ -75,11 +62,6 @@ const HamburgerMenu: React.FC = () => {
     const toggleEventDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
         handleEventDropdownChange(!isEventDropdownOpen);
-    };
-
-    const toggleAboutDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        e.preventDefault();
-        handleAboutDropdownChange(!isAboutDropdownOpen);
     };
 
     return (
@@ -127,10 +109,10 @@ const HamburgerMenu: React.FC = () => {
                                         </div>
                                         <ul className={`${styles['l-nav__dropdown']} ${isEventDropdownOpen ? styles['open'] : ''}`}>
                                             <li className={styles['l-nav__dropdownItem']}>
-                                                <a href="/event/upcoming">Upcoming Events</a>
+                                                <a href="/event">All Events</a>
                                             </li>
                                             <li className={styles['l-nav__dropdownItem']}>
-                                                <a href="/event/past">Past Events</a>
+                                                <a href="/event?id=食販">Test Box</a>
                                             </li>
                                         </ul>
                                     </li>

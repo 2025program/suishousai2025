@@ -8,13 +8,6 @@ export type FestivalItem = {
     x?: number;
     y?: number;
     slug?: string;
-}
-
-export type GroupInfo = {
-    title: string;
-    cookie_title: string;
-    url: string;
-    itemBasePath: string;
-    icon: LucideIcon;
-    items: FestivalItem[];
+    class?: string;
+    location?: string;
 }
