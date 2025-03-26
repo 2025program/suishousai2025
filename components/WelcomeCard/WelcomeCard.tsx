@@ -8,48 +8,6 @@ const WelcomeCard: React.FC = () => {
             <div className={styles['bod']}>
                 <div className={styles['c-wholeContainer']}>
                     <main>
-                        <div className={styles['l-top__svgPath']}>
-                            <svg width="0" height="0" className={styles['sv']}>
-                                <defs>
-                                    <clipPath id="myClip" clipPathUnits="objectBoundingBox">
-                                        <path
-                                            transform="scale(0.00052083, 0.002)"
-                                            d="m0,500V0s1294.5,127.19,1920,484v16H0Z"
-                                        />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <svg width="0" height="0" className={styles['sv']}>
-                                <defs>
-                                    <clipPath id="myClipHistory" clipPathUnits="objectBoundingBox">
-                                        <path
-                                            transform="scale(0.00052083, 0.0025641)"
-                                            d="m0,390h1920V0S674,15.11,0,311.56v78.44Z"
-                                        />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <svg width="0" height="0" className={styles['sv']}>
-                                <defs>
-                                    <clipPath id="myClipOverview" clipPathUnits="objectBoundingBox">
-                                        <path
-                                            transform="scale(0.00052083, 0.0021041)"
-                                            d="m0,487h1920V0S1229,343.02,0,205.81v281.19Z"
-                                        />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <svg width="0" height="0" className={styles['sv']}>
-                                <defs>
-                                    <clipPath id="myClipOverviewSp" clipPathUnits="objectBoundingBox">
-                                        <path
-                                            transform="scale(0.00142083, 0.0031681)"
-                                            d="m0,314h750V0S292,44,0,203.67v110.33Z"
-                                        />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </div>
                         <div className={styles['u-overflow-x-hidden']}>
                             <section className={styles['l-topMv']}>
                                 <div className={styles['l-topMv__TextContentsArea']}>
