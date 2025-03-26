@@ -1,121 +1,165 @@
-// pages/Home.tsx
-"use client";
-
+import Image from 'next/image';
 import React from 'react';
-import Search from '@/components/search/Search';
-import { normalizeString, normalizeSearchString } from '../utils/normalizeKana';
-import { festivalItems, FestivalItem } from '@/utils/festival';
-import { SearchIcon } from 'lucide-react';
-import WelcomeCard from '@/components/WelcomeCard/WelcomeCard';
-import Footer from '@/components/Footer/Footer';
-import NotificationBox from '@/components/NotificationBox/NotificationBox';
-import TicketAnnouncementBox from '@/components/TicketAnnouncementBox/TicketAnnouncementBox';
-
-import styles from '@/components/Home.module.css';
-
-// フィルタリング関数（タイトル・読みを対象にしています）
-const filterFestivalItem = (item: FestivalItem, query: string): boolean => {
-  const searchableText = normalizeSearchString(item.title, item.reading);
-  const normalizedQuery = normalizeString(query);
-  return searchableText.includes(normalizedQuery);
-};
-
-// フェスティバルアイテムのレンダリング関数（タイトルのみ表示）
-const renderFestivalItem = (item: FestivalItem, index: number) => (
-  <a
-    key={`${item.title}-${index}`}
-    href={`/event/${encodeURIComponent(item.title)}`}
-    className={styles.festivalItem}
-    aria-label={`詳細を見る ${item.title}`}
-  >
-    <div className={styles.festivalItem__container}>
-      <h3 className={styles.festivalItem__title}>{item.title}</h3>
-    </div>
-  </a>
-);
+import "./homepage.css"
 
 // Homeコンポーネント
 const Home: React.FC = () => {
   return (
     <>
-      <div className={styles.homeContainer}>
-        {/* 1段目: ようこそカード */}
-        <WelcomeCard />
+      <div className="body">
+        <div className="c-wholeContainer">
+          <main>
+            <div className="u-overflow-x-hidden">
+              <section className="l-topMv">
+                <div className="l-topMv__TextContentsArea">
+                  <div className="l-topMv__TextContents">
+                    <div className="l-topMv__ScrollAnimation">
+                      <div className="c-titleAnimation _vertical_">
+                        <div className="c-titleAnimation__textImageInner">
+                          <Image
+                            className="c-titleAnimation__textImage _mv_ img"
+                            src="/welcome/title.png"
+                            alt=""
+                            width={800}  // 適切なサイズに調整してください
+                            height={200} // 適切なサイズに調整してください
+                            priority
+                          />
+                        </div>
+                        <div className="c-titleAnimation__textImageInner">
+                          <Image
+                            className="c-titleAnimation__textImage _mv_ img"
+                            src="/welcome/title.png"
+                            alt=""
+                            width={800}
+                            height={200}
+                            priority
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <h1 className="l-topMv__LogoInner">
+                      <picture>
+                        <source
+                          type="image/webp"
+                          media="(min-width:768px)"
+                          srcSet="/welcome/logopc.png"
+                        />
+                        <Image
+                          className="l-topMv__Logo img"
+                          src="/welcome/logosp.png"
+                          alt=""
+                          width={497}
+                          height={427}
+                          priority
+                        />
+                      </picture>
+                    </h1>
+                    <p className="l-topMv__CopyInner">
+                      <picture>
+                        <source
+                          type="image/webp"
+                          media="(min-width:768px)"
+                          srcSet="/welcome/mv_copy.webp"
+                        />
+                        <Image
+                          className="l-topMv__Copy img"
+                          src="/welcome/mv_copy_sp.webp"
+                          alt="主役になろう"
+                          width={594}
+                          height={197}
+                          priority
+                        />
+                      </picture>
+                    </p>
+                  </div>
+                </div>
+                <div className="l-topMv__Carousel">
+                  <picture>
+                    <source
+                      type="image/webp"
+                      media="(min-width:768px)"
+                      srcSet="/welcome/rightpc.png"
+                    />
+                    <Image
+                      className="l-topMv__CarouselImage img"
+                      src="/welcome/rightsp.png"
+                      alt=""
+                      width={750}
+                      height={991}
+                      priority
+                    />
+                  </picture>
+                </div>
+              </section>
+              <footer className="l-footer">
+                <div className="l-footer__upper">
+                  <picture>
+                    <source
+                      type="image/webp"
+                      media="(min-width:768px)"
+                      srcSet="/welcome/footer_mask_pc.png"
+                    />
+                    <Image
+                      className="l-footer__upper_sp img"
+                      src="/welcome/footer_mask_pc.png" //別途sp用の画像もあるのでそっちに変更も可能
+                      alt=""
+                      width={2000}
+                      height={200}
+                      priority
+                    />
+                  </picture>
 
-        {/* 検索セクション */}
-        <div className={styles.searchSection}>
-          {/* ラベルとアイコン */}
-          <div className={styles.searchHeader}>
-            <SearchIcon className={styles.searchIcon} />
-            <a href='/event' className={styles.searchTitle}>イベント検索</a>
-            <a href="/event" className={styles.detailedSearch}>
-              詳細検索はこちら
-            </a>
-          </div>
-          {/* 検索コンポーネント */}
-          <Search<FestivalItem>
-            data={festivalItems}
-            filterFunction={filterFestivalItem}
-            renderItem={renderFestivalItem}
-            debounceTime={300}
-            emptyMessage="一致する結果が見つかりませんでした。"
-            placeholderMessage="検索キーワードを入力してください。"
-            placeholder="検索..."
-            containerClassName={styles.myCustomSearch}
-            searchBarClassName={styles.myCustomSearchBar}
-            searchResultsClassName={styles.myCustomSearchResults}
-          />
-        </div>
+                  <Image
+                    className="l-footer__newstag img"
+                    src="/welcome/newstag.png"
+                    alt=""
+                    width={400}
+                    height={200}
+                    priority
+                  />
 
-        {/* お知らせとアンケート */}
-        <div className={styles.homeSecondaryGrid}>
-          {/* 2段目: お知らせと整理券情報 */}
-          <div className={styles.topRow}>
-            <NotificationBox />
-            <TicketAnnouncementBox />
-          </div>
-          {/* mapコンテンツ */}
-          <div className={styles.surveyCardBox}>
-            <div className={styles.surveyCard}>
-              <div className={styles.surveyCardHeader}>
-                <h2 className={styles.surveyTitle}>map</h2>
-                <p className={styles.surveyDescription}>ここにマップ誘導コンテンツ</p>
-              </div>
-              <div className={styles.surveyCardContent}>
-                <p className={styles.surveyText}>背景画像設定予定</p>
-                <a href="/map" className={styles.surveyButton}>
-                  このボタンを遷移ボタンにする予定
-                </a>
-              </div>
+                  <div className="l-footer__Marquee">
+                    <div className="c-titleAnimation _share_ _reverse_">
+                      <div className="c-titleAnimation__textImageInner">
+                        <picture>
+                          <source
+                            type="image/webp"
+                            srcSet="/welcome/title_share.png"
+                          />
+                          <Image
+                            className="c-titleAnimation__textImage"
+                            src="/welcome/title_share.png"
+                            alt=""
+                            width={2384}
+                            height={150}
+                            loading="lazy"
+                          />
+                        </picture>
+                      </div>
+                      <div className="c-titleAnimation__textImageInner">
+                        <picture>
+                          <source
+                            type="image/webp"
+                            srcSet="/welcome/title_share.png"
+                          />
+                          <Image
+                            className="c-titleAnimation__textImage"
+                            src="/welcome/title_share.png"
+                            alt=""
+                            width={2384}
+                            height={150}
+                            loading="lazy"
+                          />
+                        </picture>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </footer>
             </div>
-          </div>
-          {/* アンケートフォームコンテンツ */}
-          <div className={styles.surveyCardBox}>
-            <div className={styles.surveyCard}>
-              <div className={styles.surveyCardHeader}>
-                <h2 className={styles.surveyTitle}>アンケート</h2>
-                <p className={styles.surveyDescription}>ご意見をお聞かせください</p>
-              </div>
-              <div className={styles.surveyCardContent}>
-                <p className={styles.surveyText}>ここにアンケートフォームコンテンツ</p>
-                <a href="/survey" className={styles.surveyButton}>
-                  アンケートに回答する
-                </a>
-              </div>
-            </div>
-          </div>
+          </main>
         </div>
       </div>
-      <Footer
-        classNames={{
-          root: styles.footer,
-          container: styles.footerContainer,
-          address: styles.footerAddress,
-          links: styles.footerLinks,
-          link: styles.footerLink,
-          copyright: styles.footerCopyright,
-        }}
-      />
     </>
   );
 };

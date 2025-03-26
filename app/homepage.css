@@ -1,20 +1,70 @@
-.heda {
-    cursor: auto;
-}
-
-.bod {
+.body {
     line-height: inherit;
     margin: 0;
 }
 
-.im,
-.sv {
+.img,
+.svg {
     display: block;
 }
 
-.im {
+.img {
     height: auto;
     max-width: 100%
+}
+
+.l-footer {
+    margin-top: 0;
+    position: relative;
+    z-index: 3
+}
+
+.l-footer__newstag {
+    position: absolute;
+    left: -25px;
+    top: -25px;
+    height: 28vw;
+    min-height: 130px;
+    width: auto;
+    z-index: 5;
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+.l-footer__upper {
+    background-color: #00ff1c;
+    pointer-events: none;
+    width: 100%;
+    height: 500px;
+}
+
+.l-footer__upper:before {
+    background-color: #00ff1c;
+    content: "";
+    display: block;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    width: 100%;
+}
+
+.l-footer__upper_sp {
+    left: 0;
+    position: absolute;
+    top: 1px;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%)
+}
+
+.l-footer__container {
+    background-color: #fff;
+    padding-top: 9.375rem
+}
+
+.l-footer__Marquee {
+    position: absolute;
+    top: 3.75rem;
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
 }
 
 .c-titleAnimation {
@@ -58,6 +108,11 @@
 
 .c-titleAnimation:not(._vertical_) .c-titleAnimation__textImage {
     width: auto
+}
+
+.c-titleAnimation._share_ .c-titleAnimation__textImage {
+    aspect-ratio: 2384/150;
+    height: 17.3333333333vw
 }
 
 @-webkit-keyframes loop {
@@ -108,32 +163,36 @@
     }
 }
 
+.l-top__svgPath {
+    height: 0
+}
+
 .l-topMv {
     position: relative;
     z-index: 1;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    height: 100vh;
 }
 
 .l-topMv:after {
     aspect-ratio: 1500/380;
     background-repeat: no-repeat;
     background-size: contain;
-    bottom: 0px;
+    bottom: 2px;
     content: "";
     display: block;
     left: 0;
     position: absolute;
     -webkit-transform: translateY(100%);
     transform: translateY(100%);
-    width: 102%;
+    width: 100%
 }
 
 .l-topMv__TextContentsArea {
     height: 100%;
     position: absolute;
     width: 100%;
-    z-index: 2
+    z-index: 2;
+    overflow-y: hidden;
 }
 
 .l-topMv__ScrollAnimation {
@@ -171,7 +230,7 @@
 .l-topMv__CopyInner {
     left: 5.4666666667%;
     position: absolute;
-    top: 62.6666666667vw;
+    top: 46vw;
     z-index: 2
 }
 
@@ -181,10 +240,34 @@
 }
 
 .u-overflow-x-hidden {
-    overflow-x: hidden;
+    overflow-x: hidden
 }
 
 @media (min-width:768px) {
+    .l-footer__upper {
+        overflow: hidden
+    }
+
+    .l-footer__upper:before {
+        display: none
+    }
+
+    .l-footer__upper_sp {
+        display: block
+    }
+
+    .l-footer__newstag {
+        left: -40px;
+        top: 10px;
+        height: 18vw;
+        max-height: 270px;
+    }
+
+    .l-footer__Marquee {
+        -webkit-transform: rotate(-1deg);
+        transform: rotate(-1deg)
+    }
+
     .c-titleAnimation._share_ .c-titleAnimation__textImage {
         height: 7.4362974519vw
     }
@@ -198,7 +281,7 @@
     }
 
     .l-topMv__ScrollAnimation {
-        display: block
+        display: block;
     }
 
     .l-topMv__Carousel {
@@ -206,7 +289,9 @@
         max-width: 70.6770833333%;
         padding-bottom: 0;
         padding-left: 0;
-        padding-top: 0
+        padding-top: 0;
+        max-height: 110vh;
+        overflow-y: hidden;
     }
 
     .l-topMv__LogoInner {
@@ -233,12 +318,5 @@
         display: block;
         margin-left: 10.2083333333%;
         width: 30.9375%
-    }
-}
-
-@media (min-width:960px) {
-    .heda {
-        height: 100vh;
-        overflow-y: hidden;
     }
 }
