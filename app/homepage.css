@@ -13,13 +13,13 @@
     max-width: 100%
 }
 
-.l-footer {
+.newsbox {
     margin-top: 0;
     position: relative;
     z-index: 3
 }
 
-.l-footer__newstag {
+.newsbox__newstag {
     position: absolute;
     left: -25px;
     top: -25px;
@@ -31,15 +31,16 @@
     transform: rotate(5deg);
 }
 
-.l-footer__upper {
-    background-color: #00ff1c;
+.newsbox__upper {
+    background-color: #3aa0ff;
     pointer-events: none;
     width: 100%;
-    height: 500px;
+    height: 25vw;
+    min-height: 120px;
 }
 
-.l-footer__upper:before {
-    background-color: #00ff1c;
+.newsbox__upper:before {
+    background-color: #3aa0ff;
     content: "";
     display: block;
     -webkit-transform: translateY(-100%);
@@ -47,7 +48,7 @@
     width: 100%;
 }
 
-.l-footer__upper_sp {
+.newsbox__upper_sp {
     left: 0;
     position: absolute;
     top: 1px;
@@ -55,25 +56,109 @@
     transform: translateY(-100%)
 }
 
-.l-footer__container {
-    background-color: #fff;
-    padding-top: 9.375rem
-}
-
-.l-footer__Marquee {
+.newsbox__Marquee {
     position: absolute;
     top: 3.75rem;
     -webkit-transform: rotate(2deg);
     transform: rotate(2deg);
 }
 
-.c-titleAnimation {
+/* お知らせコンテンツ */
+.newsbox__content {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #3aa0ff;
+    display: flex;
+    justify-content: center;
+    /* 中央寄せ */
+}
+
+/* 70%部分のスクロール用コンテナ */
+.news-scroll-container {
+    width: 70%;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* 各ニュース項目の親（中央寄せ用） */
+.boxkey {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* ニュース項目自体（左寄せのテキスト） */
+.news-item {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.news-item__title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.news-item__row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.news-item__time {
+    width: 150px;
+    margin-right: 20px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.news-item__body {
+    flex: 1;
+    text-align: left;
+}
+
+.news-item__link {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* 区切り線（中央寄せ＆70%に合わせる） */
+.news-divider {
+    width: 100%;
+    border-top: 1px solid #ccc;
+    margin: 20px auto;
+}
+
+/* モバイル用（幅767px以下） */
+@media (max-width: 767px) {
+    .news-scroll-container {
+        width: 90%;
+    }
+
+    /* 左右のレイアウトを縦並びに変更 */
+    .news-item__row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .news-item__time {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+
+.titleAnimation {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex
 }
 
-.c-titleAnimation._vertical_ {
+.titleAnimation._vertical_ {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -81,7 +166,7 @@
     height: 100%
 }
 
-.c-titleAnimation__textImageInner {
+.titleAnimation__textImageInner {
     -webkit-animation: loop 40s linear infinite;
     animation: loop 40s linear infinite;
     display: -webkit-box;
@@ -92,25 +177,25 @@
     flex: none
 }
 
-.c-titleAnimation._reverse_ .c-titleAnimation__textImageInner {
+.titleAnimation._reverse_ .titleAnimation__textImageInner {
     animation-direction: reverse
 }
 
-.c-titleAnimation._vertical_ .c-titleAnimation__textImageInner {
+.titleAnimation._vertical_ .titleAnimation__textImageInner {
     -webkit-animation: loopVertical 40s linear infinite;
     animation: loopVertical 40s linear infinite
 }
 
-.c-titleAnimation__textImage {
+.titleAnimation__textImage {
     max-width: none;
     width: 100%
 }
 
-.c-titleAnimation:not(._vertical_) .c-titleAnimation__textImage {
+.titleAnimation:not(._vertical_) .titleAnimation__textImage {
     width: auto
 }
 
-.c-titleAnimation._share_ .c-titleAnimation__textImage {
+.titleAnimation._share_ .titleAnimation__textImage {
     aspect-ratio: 2384/150;
     height: 17.3333333333vw
 }
@@ -163,17 +248,13 @@
     }
 }
 
-.l-top__svgPath {
-    height: 0
-}
-
-.l-topMv {
+.topMv {
     position: relative;
     z-index: 1;
     height: 100vh;
 }
 
-.l-topMv:after {
+.topMv:after {
     aspect-ratio: 1500/380;
     background-repeat: no-repeat;
     background-size: contain;
@@ -187,7 +268,7 @@
     width: 100%
 }
 
-.l-topMv__TextContentsArea {
+.topMv__TextContentsArea {
     height: 100%;
     position: absolute;
     width: 100%;
@@ -195,7 +276,7 @@
     overflow-y: hidden;
 }
 
-.l-topMv__ScrollAnimation {
+.topMv__ScrollAnimation {
     display: none;
     height: 100%;
     left: 0;
@@ -204,87 +285,89 @@
     width: 4.4791666667%
 }
 
-.l-topMv__Carousel {
+.topMv__Carousel {
     padding-bottom: 12vw;
     padding-top: 22.6666666667vw;
     position: relative
 }
 
-.l-topMv__CarouselImage {
+.topMv__CarouselImage {
     max-width: none;
     pointer-events: none;
     width: 100%
 }
 
-.l-topMv__LogoInner {
+.topMv__LogoInner {
     left: 6.4%;
     position: absolute;
     top: 4.4vw;
     z-index: 2
 }
 
-.l-topMv__Logo {
+.topMv__Logo {
     width: 46.1333333333%
 }
 
-.l-topMv__CopyInner {
+.topMv__CopyInner {
     left: 5.4666666667%;
     position: absolute;
     top: 46vw;
     z-index: 2
 }
 
-.l-topMv__Copy {
+.topMv__Copy {
     max-width: none;
     width: 12vw
 }
 
-.u-overflow-x-hidden {
+.overflow-x-hidden {
     overflow-x: hidden
 }
 
 @media (min-width:768px) {
-    .l-footer__upper {
-        overflow: hidden
+    .newsbox__upper {
+        overflow: hidden;
+        height: 20vw;
+        max-height: 300px;
     }
 
-    .l-footer__upper:before {
+    .newsbox__upper:before {
         display: none
     }
 
-    .l-footer__upper_sp {
+    .newsbox__upper_sp {
         display: block
     }
 
-    .l-footer__newstag {
+    .newsbox__newstag {
         left: -40px;
         top: 10px;
         height: 18vw;
         max-height: 270px;
     }
 
-    .l-footer__Marquee {
+    .newsbox__Marquee {
         -webkit-transform: rotate(-1deg);
         transform: rotate(-1deg)
     }
 
-    .c-titleAnimation._share_ .c-titleAnimation__textImage {
+    .titleAnimation._share_ .titleAnimation__textImage {
         height: 7.4362974519vw
     }
 
-    .l-topMv:after {
+    .topMv:after {
         display: none
     }
 
-    .l-topMv__TextContents {
+    .topMv__TextContents {
         position: relative
     }
 
-    .l-topMv__ScrollAnimation {
+    .topMv__ScrollAnimation {
         display: block;
     }
 
-    .l-topMv__Carousel {
+    .topMv__Carousel {
         margin-left: auto;
         max-width: 70.6770833333%;
         padding-bottom: 0;
@@ -294,27 +377,27 @@
         overflow-y: hidden;
     }
 
-    .l-topMv__LogoInner {
+    .topMv__LogoInner {
         left: auto;
         margin-top: 5.1041666667%;
         position: static;
         top: auto
     }
 
-    .l-topMv__Logo {
+    .topMv__Logo {
         display: block;
         margin-left: 13.75%;
         width: 25.8854166667%
     }
 
-    .l-topMv__CopyInner {
+    .topMv__CopyInner {
         left: auto;
         margin-top: 3.6458333333%;
         position: relative;
         top: auto
     }
 
-    .l-topMv__Copy {
+    .topMv__Copy {
         display: block;
         margin-left: 10.2083333333%;
         width: 30.9375%

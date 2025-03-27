@@ -72,7 +72,7 @@ const HamburgerMenu: React.FC = () => {
                         <div className={`${styles['l-nav__left']} ${isActive ? styles['is-active'] : ''}`} onClick={toggleMenu}>
                             <Image
                                 className={`${styles['pic-left']}`}
-                                src="/welcome/mv_copy.webp"
+                                src="/welcome/none-copy.png"
                                 alt="主役になろう"
                                 width={594}
                                 height={197}
